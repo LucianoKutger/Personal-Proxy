@@ -1,0 +1,24 @@
+# Node.js standard
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Umgebungsspezifische Dateien
+.env
+.env.*
+
+# Editor-spezifische Dateien
+.vscode/
+.idea/
+
+# OS-spezifische Dateien
+.DS_Store
+Thumbs.db
+
+# Build-Ordner (falls du z.B. TypeScript nutzt)
+dist/
+build/
+
+# Sonstiges
+*.log
