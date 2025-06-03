@@ -104,8 +104,8 @@ router.post("/supabaseGet", async (req, res) => {
 })
 
 
-router.get("/cronPing", (res) => {
-  return res.status(200);
+router.get("/cronPing", (req, res) => {
+  return res.status(200).send("Ok");
 })
 
 
