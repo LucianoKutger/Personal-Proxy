@@ -104,6 +104,10 @@ router.post("/supabaseGet", async (req, res) => {
 })
 
 
+router.get("/cronPing", (res) => {
+  return res.status(200);
+})
+
 
 
 module.exports = router;
