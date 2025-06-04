@@ -31,19 +31,24 @@ function createJWT() {
         { algorithm: 'HS256', expiresIn: '1h' })
 }
 
-const token = createJWT()
 
 
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
-    global: {
-        headers: {
-            Authorization: `Bearer ${token}`,
+function getSupabaseClient() {
+    const token = createJWT()
+
+    return createClient(SUPABASE_URL, SUPABASE_KEY, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
         },
-    },
-});
+    });
+
+}
 
 async function checkForTranslationinSupabase(hash, mode) {
+    const supabase = getSupabaseClient()
 
     const { data, error } = await supabase
         .from('translations')
@@ -69,6 +74,7 @@ async function checkForTranslationinSupabase(hash, mode) {
 }
 
 async function postTranslation(hash, mode, translation) {
+    const supabase = getSupabaseClient()
 
     const { data, error } = await supabase
         .from('translations')
