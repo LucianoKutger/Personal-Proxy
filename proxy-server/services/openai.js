@@ -29,10 +29,9 @@ async function translateParagraph(paragraph) {
         {
           role: "user",
           content: [
-            {
-              type: "text",
-              text: paragraph,
-            },
+            { type: "file", file_id: 'file-LAXfBNaKiMy7anUKjBpE58' },
+            { type: "file", file_id: 'file-QKET7EPLrmqpycTrkGE8Ff' },
+            { type: "text", text: paragraph },
           ],
         },
       ],
