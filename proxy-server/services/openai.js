@@ -15,7 +15,7 @@ const client = new openai.OpenAI({ apiKey: OPENAI_API_KEY });
 async function translateParagraph(paragraph) {
   try {
     const response = await client.chat.completions.create({
-      model: "ft:gpt-4.1-2025-04-14:ki-projekt:einfache-sprache-uebersetzerv1:BeLlyzL1",
+      model: "gpt-4.1",
       messages: [
         {
           role: "system",
