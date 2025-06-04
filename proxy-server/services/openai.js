@@ -7,6 +7,8 @@ require("dotenv").config();
 //env vars
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const SYSTEM_INSTRUCTIONS = process.env.SYSTEM_INSTRUCTIONS;
+const DIN24495 = process.env.DIN24495
+const DIN8581 = process.env.DIN8581
 
 const client = new openai.OpenAI({ apiKey: OPENAI_API_KEY });
 
@@ -14,14 +16,14 @@ const client = new openai.OpenAI({ apiKey: OPENAI_API_KEY });
 
 async function translateParagraph(paragraph) {
   try {
-    const response = await client.chat.completions.create({
+    const response = await client.responses.create({
       model: "gpt-4.1",
-      messages: [
+      input: [
         {
           role: "system",
           content: [
             {
-              type: "text",
+              type: "input_text",
               text: SYSTEM_INSTRUCTIONS,
             },
           ],
@@ -29,15 +31,24 @@ async function translateParagraph(paragraph) {
         {
           role: "user",
           content: [
-            { type: "file", file_id: 'file-LAXfBNaKiMy7anUKjBpE58' },
-            { type: "file", file_id: 'file-QKET7EPLrmqpycTrkGE8Ff' },
-            { type: "text", text: paragraph },
+            {
+              type: "input_file",
+              file_id: DIN24495
+            },
+            {
+              type: "input_file",
+              file_id: DIN8581
+            },
+            {
+              type: "input_text",
+              text: paragraph
+            },
           ],
         },
       ],
     });
 
-    return response.choices[0].message.content;
+    return response.output_text
 
   } catch (error) {
     console.error('Fehler: ', error)
