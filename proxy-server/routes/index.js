@@ -110,4 +110,33 @@ router.get("/cronPing", (req, res) => {
 
 
 
+router.post("/googleSheet", async (req, res) => {
+  console.log(req.body)
+  const { text } = req.body;
+  let response
+
+  if (!text) {
+    return res.status(400).json({ error: 'Fehlende oder ungültige Daten.' });
+  }
+
+  try {
+
+    response = await translateParagraph(text)
+
+  } catch (e) {
+    console.error(e)
+  }
+
+
+
+  try {
+    const result = await appendValues([[text, response]]);
+    res.json({ message: 'Werte erfolgreich hinzugefügt.', result });
+  } catch (err) {
+    console.error('Fehler beim Anhängen:', err);
+    res.status(500).json({ error: 'Interner Serverfehler.' });
+  }
+
+});
+
 module.exports = router;

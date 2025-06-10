@@ -46,4 +46,38 @@ async function translateParagraph(paragraph) {
   }
 }
 
-module.exports = { translateParagraph };
+async function translatePlainGerman(paragraph) {
+  try {
+    const response = await client.chat.completions.create({
+      model: "gpt-4.1",
+      messages: [
+        {
+          role: "system",
+          content: [
+            {
+              type: "text",
+              text: SYSTEM_INSTRUCTIONS_PAIN_GERMAN,
+            },
+          ],
+        },
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: "Übersetze diesen Text in einfache Sprache: \n" + paragraph + "\n Achte darauf mir ausschloeßlich den Übersetzen text zu geben ohne irgendwelche einleitungssätze außerderm formuliere deisen bitte als fließtext ohne absätze",
+            },
+          ],
+        },
+      ],
+    });
+
+    return response.choices[0].message.content;
+
+  } catch (error) {
+    console.error('Fehler: ', error)
+    throw error
+  }
+}
+
+module.exports = { translateParagraph, translatePlainGerman };
