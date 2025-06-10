@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const { translateParagraph } = require("../services/openai")
 const { checkForTranslationinSupabase, postTranslation } = require("../services/supabase")
+const { appendValues } = require("../services/googleSheets")
 
 
 router.use(express.json());
