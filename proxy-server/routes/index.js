@@ -113,10 +113,10 @@ router.get("/cronPing", (req, res) => {
 
 router.post("/googleSheet", async (req, res) => {
   console.log(req.body)
-  const { text } = req.body;
+  const { text, url } = req.body;
   let response
 
-  if (!text) {
+  if (!text || !url) {
     return res.status(400).json({ error: 'Fehlende oder ungültige Daten.' });
   }
 
@@ -131,7 +131,7 @@ router.post("/googleSheet", async (req, res) => {
 
 
   try {
-    const result = await appendValues([[text, response]]);
+    const result = await appendValues([[text, response, url]]);
     res.json({ message: 'Werte erfolgreich hinzugefügt.', result });
   } catch (err) {
     console.error('Fehler beim Anhängen:', err);
