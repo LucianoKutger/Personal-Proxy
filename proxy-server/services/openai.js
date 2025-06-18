@@ -7,6 +7,7 @@ require("dotenv").config();
 //env vars
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const SYSTEM_INSTRUCTIONS = process.env.SYSTEM_INSTRUCTIONS;
+const SYSTEM_INSTRUCTIONS_PLAIN_GERMAN = process.env.SYSTEM_INSTRUCTIONS_PLAIN_GERMAN;
 
 const client = new openai.OpenAI({ apiKey: OPENAI_API_KEY });
 
@@ -56,7 +57,7 @@ async function translatePlainGerman(paragraph) {
           content: [
             {
               type: "text",
-              text: SYSTEM_INSTRUCTIONS_PAIN_GERMAN,
+              text: SYSTEM_INSTRUCTIONS_PLAIN_GERMAN,
             },
           ],
         },
