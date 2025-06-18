@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const router = express.Router();
-const { translateParagraph } = require("../services/openai")
+const { translateParagraph, translatePlainGerman } = require("../services/openai")
 const { checkForTranslationinSupabase, postTranslation } = require("../services/supabase")
 const { appendValues } = require("../services/googleSheets")
 
@@ -122,7 +122,7 @@ router.post("/googleSheet", async (req, res) => {
 
   try {
 
-    response = await translateParagraph(text)
+    response = await translatePlainGerman(text)
 
   } catch (e) {
     console.error(e)
