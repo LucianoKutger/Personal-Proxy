@@ -49,7 +49,7 @@ async function translateParagraph(paragraph) {
 async function translatePlainGerman(paragraph) {
   try {
     const response = await client.chat.completions.create({
-      model: "gpt-4.1",
+      model: "o3",
       messages: [
         {
           role: "system",
