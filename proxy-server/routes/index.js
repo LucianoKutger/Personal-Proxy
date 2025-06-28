@@ -1,10 +1,10 @@
-require("dotenv").config();
+
 
 const express = require("express");
 const router = express.Router();
-const { translateParagraph, translatePlainGerman } = require("../services/openai")
-const { checkForTranslationinSupabase, postTranslation } = require("../services/supabase")
-const { appendValues } = require("../services/googleSheets")
+const { translateParagraph, translatePlainGerman } = require("../services/easyReader/openai")
+const { checkForTranslationinSupabase, postTranslation } = require("../services/easyReader/supabase")
+const { appendValues } = require("../services/DatasetSearch/googleSheets")
 
 
 router.use(express.json());

@@ -6,7 +6,8 @@ require("dotenv").config();
 
 
 
-const requiredEnvVars = ['SUPABASE_KEY', 'SUPABASE_URL', 'SUPABASE_JWT_SECRET', 'PROJECT_ID'];
+const requiredEnvVars = ['SUPABASE_KEY_EASYREADER', 'SUPABASE_URL_EASYREADER', 'SUPABASE_JWT_SECRET_EASYREADER',
+    'PROJECT_ID_EASYREADER'];
 
 requiredEnvVars.forEach((key) => {
     if (!process.env[key]) {
@@ -14,10 +15,10 @@ requiredEnvVars.forEach((key) => {
     }
 });
 
-const SUPABASE_KEY = process.env.SUPABASE_KEY;
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET;
-const PROJECT_ID = process.env.PROJECT_ID;
+const SUPABASE_KEY = process.env.SUPABASE_KEY_EASYREADER;
+const SUPABASE_URL = process.env.SUPABASE_URL_EASYREADER;
+const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET_EASYREADER;
+const PROJECT_ID = process.env.PROJECT_ID_EASYREADER;
 
 if (!SUPABASE_KEY || !SUPABASE_URL) {
     throw new Error('No SUPABASE_KEY or SUPABASE_URL found')
