@@ -29,11 +29,16 @@ async function login(email, password) {
     }
 }
 
-async function register(email, password) {
+async function register(email, password, displayName) {
     try {
         const { data, error } = await supabase.auth.signUp({
             email: email,
-            password: password
+            password: password,
+            options: {
+                data: {
+                    display_name: displayName
+                }
+            }
         })
 
         if (error) throw error
@@ -88,9 +93,9 @@ async function getSession() {
 
 //DATABASE FUNCTIONS
 
-async function getStats(userId) {
+async function getStats(userId, userClient) {
     try {
-        const { data, error } = await supabase
+        const { data, error } = await userClient
             .from('stats')
             .select()
             .eq('userId', userId)
@@ -104,13 +109,13 @@ async function getStats(userId) {
     }
 }
 
-async function getStatById(statId, userId) {
+async function getStatById(statId, userId, userClient) {
     try {
-        const { data, error } = await supabase
+        const { data, error } = await userClient
             .from('stats')
             .select()
             .eq("userId", userId)
-            .eq("statId", statId)
+            .eq("id", statId)
 
         if (error) throw error
 
@@ -143,10 +148,10 @@ async function postStat(stat, userClient) {
     }
 }
 
-async function deleteStat(statId) {
+async function deleteStat(statId, userClient) {
     try {
 
-        const response = await supabase
+        const response = await userClient
             .from('stats')
             .delete()
             .eq('id', statId)
@@ -160,7 +165,15 @@ async function deleteStat(statId) {
 }
 
 //USER CLIENT
+function createUserClient(access_token) {
+    return createClient(SUPABASE_URL, SUPABASE_KEY, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${access_token}`,
+            },
+        },
+    });
+}
 
 
-
-module.exports = { register, logout, login, refreshAccessToken, getStatById, getStats, deleteStat, postStat, getSession }
+module.exports = { register, logout, login, refreshAccessToken, getStatById, getStats, deleteStat, postStat, getSession, createUserClient }
