@@ -5,7 +5,8 @@ require("dotenv").config();
 
 
 //env vars
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY_EASYREADER;
+const OPENAI_API_KEY = process.env.OPENAI_KEY_PROJECT;
+//const OPENAI_API_KEY_DEV = process.env.OPENAI_API_KEY_EASYREADER;
 const SYSTEM_INSTRUCTIONS = process.env.SYSTEM_INSTRUCTIONS_EASYREADER;
 const SYSTEM_INSTRUCTIONS_PLAIN_GERMAN = process.env.SYSTEM_INSTRUCTIONS_PLAIN_GERMAN_EASYREADER;
 
@@ -16,7 +17,7 @@ const client = new openai.OpenAI({ apiKey: OPENAI_API_KEY });
 async function translateParagraph(paragraph) {
   try {
     const response = await client.chat.completions.create({
-      model: "gpt-4.1-mini",
+      model: "ft:gpt-4.1-2025-04-14:ki-projekt:einfache-sprache-uebersetzer-final-traingsdata:C45BdAhu",
       messages: [
         {
           role: "system",
