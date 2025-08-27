@@ -33,7 +33,7 @@ async function translateParagraph(paragraph) {
           content: [
             {
               type: "text",
-              text: paragraph,
+              text: "Übersetze folgenden HTML tag, achte darauf das du mir ausschließlich den Tag gibst mit Überstezten Inhalt, behalte alle Inline tags bei, keine Kommentare, keine zusatz bemerkungen, einfach den überstezten HTML tag in den Chat hier der zu übersetzende Tag: " + paragraph,
             },
           ],
         },
