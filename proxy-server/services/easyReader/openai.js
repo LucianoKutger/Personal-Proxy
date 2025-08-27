@@ -33,7 +33,7 @@ async function translateParagraph(paragraph) {
           content: [
             {
               type: "text",
-              text: "Übersetze folgenden HTML tag, achte darauf das du mir ausschließlich den Tag gibst mit Überstezten Inhalt, behalte alle Inline tags bei, keine Kommentare, keine zusatz bemerkungen, einfach den überstezten HTML tag in den Chat hier der zu übersetzende Tag: " + paragraph,
+              text: "Übersetze folgenden HTML tag in einfache Sprache nach der DIN 8581-1 und DIN ISO 24495-1, achte darauf das du mir ausschließlich den Tag gibst mit Überstezten Inhalt. Behalte die Sprache also wenn der übergebene inhalt des HTML Tags Deutsch ist dann übersrtze auf deutsch wenn er auf Englisch ist dann auf Englisch etc., behalte alle Inline tags bei, keine Kommentare, keine zusatz bemerkungen, einfach den überstezten HTML tag in den Chat hier der zu übersetzende Tag: " + paragraph,
             },
           ],
         },
