@@ -24,7 +24,7 @@ async function translateParagraph(paragraph) {
           content: [
             {
               type: "text",
-              text: "Du bist ein Übersetzer für einfahe Sprache.\nHalte dich strikt an folgende Regeln:\n\n- Verwende ausschließlich kurze und klare Sätze.\n- Kein Satz darf mehr als 15 Worte haben.\n- Schreibe nur in aktiver Form.\n- Verwende immer die kanonische Satzstellung: Subjekt → Prädikat → Objekt.\n- Prüfe vor der Ausgabe jeden Text akribisch auf Einhaltung dieser Regeln."
+              text: SYSTEM_PROMPT_EASYREADER,
             }
           ]
         },
@@ -33,7 +33,7 @@ async function translateParagraph(paragraph) {
           content: [
             {
               type: "text",
-              text: "Übersetze folgenden HTML-Tag in einfache Sprache nach DIN 8581-1 und DIN ISO 24495-1.\nDie wichtigsten Regeln sind die aus dem Systemprompt:\n- Verwende ausschließlich kurze und klare Sätze.\n- Kein Satz darf mehr als 15 Worte haben.\n- Schreibe nur in aktiver Form.\n- Verwende immer die kanonische Satzstellung: Subjekt → Prädikat → Objekt.\n\nAchte außerdem auf alle weiteren Vorgaben in:\n" + SYSTEM_INSTRUCTIONS + "\n\nPrüfe die Übersetzung akribisch, bevor du sie ausgibst.\nPasse den Text falls nötig so an, dass alle Regeln eingehalten sind.\n\nGib mir ausschließlich den HTML-Tag mit übersetztem Inhalt zurück.\nÜbersetze die Inhalte des HTML-Tags ausschließlich auf Deutsch.\nBehalte alle Inline-Tags bei.\nKeine Kommentare, keine Zusatzbemerkungen.\n\nHier der zu übersetzende Tag:\n" + paragraph
+              text: USER_PROMPT_EASYREADER + "\n" + paragraph,
               //text: "Übersetze folgenden HTML tag in einfache Sprache nach der DIN 8581-1 und DIN ISO 24495-1, halte dich an folgende Vorgaben: \n" + SYSTEM_INSTRUCTIONS + "\n achte darauf das alle Vorgaben eingehalten wurden wie z.B. die Länge des Satzes etc. prüfe vor der Finalen übergabe der Übersetzung akribisch ob alle Vorgaben erfüllt wurden und ändere gegebenenfalls noch etwas ab sodass diese eingehalten werden. Achte darauf das du mir ausschließlich den Tag gibst mit Überstezten Inhalt. Übersetze die inhalte des HTML Tags ausschöießlich auf Deutsch, behalte alle Inline tags bei, keine Kommentare, keine zusatz bemerkungen, einfach den überstezten HTML tag in den Chat. \n hier der zu übersetzende Tag:\n " + paragraph,
             },
           ],
