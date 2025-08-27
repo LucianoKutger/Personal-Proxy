@@ -19,15 +19,15 @@ async function translateParagraph(paragraph) {
     const response = await client.chat.completions.create({
       model: "ft:gpt-4.1-2025-04-14:ki-projekt:einfache-sprache-uebersetzer-final-traingsdata:C45BdAhu",
       messages: [
-        {
+        /*{
           role: "system",
           content: [
             {
               type: "text",
-              text: SYSTEM_INSTRUCTIONS,
+              text: "SYSTEM_INSTRUCTIONS,
             },
           ],
-        },
+        },*/
         {
           role: "user",
           content: [
