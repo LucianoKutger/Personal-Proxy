@@ -8,7 +8,7 @@ const app = express()
 
 const { authenticateProjectJWT } = require('./services/jwtAuth');
 
-const proxyRoutes = require('./routes/index');
+const proxyRoutes = require('./routes/easyReader');
 const basketTrainer = require('./routes/basketTrainer');
 const easyMail = require('./routes/easyMail');
 
